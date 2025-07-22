@@ -1,0 +1,81 @@
+.header-background {
+  position: relative;
+  width: 100%;
+  background-color: transparent;
+  background-image: linear-gradient(90deg, #DAD299 0%, #B0DAB9 100%);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
+}
+@media (min-width: 1024px) {
+  .header-background {
+    z-index: 999;
+    position: relative;
+  }
+}
+@media (max-width: 767px) {
+  .header-background {
+    z-index: 999999;
+    position: relative;
+  }
+}
+/* Всегда используем min-h для хедера */
+.header-background {
+  position: relative;
+  width: 100%;
+  min-height: 64px; /* не меньше высоты лого */
+  background-color: transparent;
+  background-image: linear-gradient(90deg, #DAD299 0%, #B0DAB9 100%);
+  background-repeat: no-repeat;
+  background-size: 100% 100%; /* обязательно! */
+  background-position: center;
+  z-index: 1;
+}
+
+@media (min-width: 1024px) {
+  .header-background {
+    z-index: 999;
+    position: relative;
+    min-height: 64px; /* или больше, если хедер крупнее */
+  }
+}
+@media (max-width: 767px) {
+  .header-background {
+    z-index: 999999;
+    position: relative;
+    min-height: 64px;
+  }
+}
+
+/* --- Только оформление меню и пунктов, фон header не трогаем! --- */
+
+/* Модалка (мобильное меню) — фон, тень, z-index */
+#mobile-menu-modal {
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,.08);
+  z-index: 999;
+  border-top: 1px solid #e5e7eb;
+  /* Не трогаем display/visibility! Tailwind hidden/block рулит видимостью! */
+}
+
+/* Пункты меню в столбик — всегда flex-col через Tailwind, но на всякий случай: */
+#mobile-menu-modal nav {
+  flex-direction: column;
+}
+
+/* Ссылки — бордер, размер, цвет, ховер */
+#mobile-menu-modal nav a {
+  border-bottom: 1px solid #e5e7eb;
+  color: #222;
+  font-weight: 600;
+  font-size: 17px;
+  padding: 18px 24px;
+  text-align: left;
+  transition: color .2s;
+  text-decoration: none;
+  background: none;
+}
+#mobile-menu-modal nav a:hover {
+  color: #346849;
+}
