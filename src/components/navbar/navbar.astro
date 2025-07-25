@@ -1,0 +1,93 @@
+---
+
+import "../../styles/navbar.css";
+
+const menuitems = [
+  { title: "Головна", path: "/" },
+  { title: "Про Нас", path: "/about" },
+  { title: "Кейси", path: "/cases" },
+  { title: "Корисні сервіси", path: "/cervices" },
+  { title: "Новини", path: "/news" },
+  { title: "Вакансії", path: "/vacancies" },
+  { title: "Політика Конфіденційності", path: "/politic" },
+];
+---
+<header class="w-full bg-gradient-to-r from-[#DAD299] to-[#B0DAB9] py-2 px-4 relative">
+  <div class="max-w-6xl mx-auto flex items-center justify-between">
+    <a href="/" class="block">
+      <img src="https://unkd.com.ua/wp-content/uploads/2022/05/unkd_logo.png"
+        alt="Логотип UNKD"
+        class="w-16 h-16 object-contain"
+        width="64"
+        height="64"
+      />
+    </a>
+    <nav class="hidden lg:flex gap-2 flex-1 justify-end">
+      {menuitems.map(item => (
+        <a href={item.path} class="px-4 py-2 text-base font-semibold text-[#414141] hover:text-[#1E3C73] transition">{item.title}</a>
+      ))}
+    </nav>
+    <div class="block lg:hidden ml-auto">
+      <button id="burger-btn" class="p-2" aria-label="Открыть меню" type="button">
+        <svg width="32" height="32" fill="none">
+          <rect y="7" width="32" height="3" rx="1.5" fill="#333"/>
+          <rect y="15" width="32" height="3" rx="1.5" fill="#333"/>
+          <rect y="23" width="32" height="3" rx="1.5" fill="#333"/>
+        </svg>
+      </button>
+      <button id="close-modal" class="p-2 hidden" aria-label="Закрыть меню" type="button">
+        <svg width="32" height="32" fill="none">
+          <line x1="8" y1="8" x2="24" y2="24" stroke="#333" stroke-width="3" stroke-linecap="round"/>
+          <line x1="24" y1="8" x2="8" y2="24" stroke="#333" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+  <div
+    id="mobile-menu-modal"
+    class="absolute left-0 top-full w-full bg-white shadow-xl border-t border-gray-200 z-[999] hidden transition-all"
+  >
+    <nav class="flex flex-col divide-y divide-gray-200">
+      {menuitems.map(item => (
+        <a
+          href={item.path}
+          class="py-4 px-6 text-[16px] font-semibold text-[#414141] hover:text-[#1E3C73] transition"
+        >
+          {item.title}
+        </a>
+      ))}
+    </nav>
+  </div>
+</header>
+
+
+<script is:inline>
+console.log("Script loaded!!!");
+if (typeof window !== "undefined") {
+  document.addEventListener("DOMContentLoaded", () => {
+    const burgerBtn = document.getElementById("burger-btn");
+    const closeBtn = document.getElementById("close-modal");
+    const mobileMenu = document.getElementById("mobile-menu-modal");
+
+    burgerBtn.addEventListener("click", () => {
+      mobileMenu.classList.remove("hidden");
+      burgerBtn.classList.add("hidden");
+      closeBtn.classList.remove("hidden");
+    });
+
+    closeBtn.addEventListener("click", () => {
+      mobileMenu.classList.add("hidden");
+      burgerBtn.classList.remove("hidden");
+      closeBtn.classList.add("hidden");
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if ((e.key === "Escape" || e.key === "Esc") && !mobileMenu.classList.contains("hidden")) {
+        mobileMenu.classList.add("hidden");
+        burgerBtn.classList.remove("hidden");
+        closeBtn.classList.add("hidden");
+      }
+    });
+  });
+}
+</script>

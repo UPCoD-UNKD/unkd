@@ -1,0 +1,43 @@
+.bg-unkd-section {
+  position: relative;
+  width: 100%;
+  color: white;
+  z-index: 1;
+  background-color: #111;
+  background-image: url("https://unkd.com.ua/wp-content/uploads/2022/04/bg-intro.svg");
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: cover;
+  min-height: 100vh;
+ 
+  margin: 0;
+}
+.bg-unkd-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: rgba(17, 17, 17, 0.82);
+  pointer-events: none;
+}
+.bg-unkd-section > * {
+  position: relative;
+  z-index: 1;
+}
+.container-content {
+  position: relative;
+  z-index: 1;
+  padding: 80px 1rem;
+}
+@media (min-width: 1024px) {
+  .bg-unkd-section {
+    z-index: 999;
+    position: relative;
+  }
+}
+@media (max-width: 767px) {
+  .bg-unkd-section {
+    position: relative;
+  }
+}
+
